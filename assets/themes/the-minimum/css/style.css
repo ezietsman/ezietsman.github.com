@@ -28,6 +28,11 @@ body {
   font-size: 1em;
   line-height: 1.625em;
 }
+
+pre {
+    font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: small;
+    line-height: normal;
+}
 /*
 Font size setting
 Using Golden ratio section (Caliculated via http://j.mp/sB6oxM):
