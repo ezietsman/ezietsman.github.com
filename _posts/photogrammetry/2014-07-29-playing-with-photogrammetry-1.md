@@ -7,6 +7,9 @@ tags: [photogrammetry, python, opencv, numpy, matplotlib, geomatics]
 ---
 {% include JB/setup %}
 
+* TOC
+{:toc}
+
 ## Photogrammetry in a nutshell
 
 A couple of weeks ago I met up with a friend I haven't seen in a while, and he

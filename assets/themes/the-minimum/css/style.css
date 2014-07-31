@@ -92,6 +92,7 @@ dl,
 img {
   margin-top: 0;
   margin-bottom: 1.625em;
+  text-align: justify;
 }
 small, .small, aside {
   font-size: 0.75em;
@@ -186,16 +187,16 @@ html {
 }
 /* LINK */
 a:link {
-  color: #2d2d2d;
+  color: #3677A9;
   text-decoration: none;
 }
 a:visited {
-  color: #141414;
+  color:#551A8B;
   text-decoration: none;
 }
 a:hover {
-  color: #474747;
-  text-decoration: none;
+  color: #589819;
+  text-decoration: underline ;
 }
 /* HIGHLIGHTER */
 pre {
@@ -285,11 +286,11 @@ pre {
 .unit-article .entry-content:first-child h6 {
   margin-top: 0;
 }
-.unit-article a:link {
+/*.unit-article a:link {
   border-bottom: 1px dotted #99cc99;
-}
+}*/
 .unit-article a:visited {
-  border-bottom: 1px dotted #77bb77;
+  border-bottom: 1px solid #E25608 ;
 }
 .unit-article a:hover {
   border-bottom: 1px dotted #bbddbb;
