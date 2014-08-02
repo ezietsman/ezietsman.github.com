@@ -92,7 +92,6 @@ dl,
 img {
   margin-top: 0;
   margin-bottom: 1.625em;
-  text-align: justify;
 }
 small, .small, aside {
   font-size: 0.75em;
@@ -111,6 +110,12 @@ strong {
 }
 em {
   font-weight: normal;
+}
+
+li {
+    padding-left: 1em;
+    text-indent: -1em;
+    line-height: 1.5em;
 }
 /*
 Color schemes
@@ -173,6 +178,7 @@ No styleguide reference.
   margin-right: 16px;
   word-spacing: normal;
   vertical-align: middle;
+
 }
 .list-linear li:last-child {
   margin-right: 0;
