@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Playing with Photogrammetry 2"
-description: ""
+description: "We look at what is needed to find photogrammetric targets on images"
 category: Science
 tags: []
 ---
@@ -28,6 +28,8 @@ in. These targets come in sets and the inner segments denote the encoding.
 There are 12 segments in the inner ring and 11 of them can be filled or blank.
 One is always filled and lines up with the notch in the outer ring. _This is
 important, we'll use this later_.
+
+<!--more-->
 
 You'll also note that we don't necessarily look at them perpendicularly so on
 an image they appear as *rotated ellipses*. So we need to figure out a way to 

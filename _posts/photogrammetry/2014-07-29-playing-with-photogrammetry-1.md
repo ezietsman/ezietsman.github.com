@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Playing with Photogrammetry 1"
-description: "how I relearned how to measure things off photographs"
+description: "A plan for a new photogrammetry coding project"
 category: Science
 tags: [photogrammetry, python, opencv, numpy, matplotlib, geomatics]
 ---
@@ -21,6 +21,8 @@ turns out he went to Ghana and carefully stuck encoded and standard
 consumer-grade digital SLR camera to get his results, using the Photomodeler
 software. The method used to perform these measurements is called
 [Photogrammetry](http://en.wikipedia.org/wiki/Photogrammetry).
+
+<!--more-->
 
 From the Wikipedia article:
 
