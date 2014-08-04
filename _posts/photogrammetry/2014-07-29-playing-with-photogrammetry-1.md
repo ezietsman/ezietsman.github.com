@@ -33,7 +33,7 @@ points. Sweet!!
 
 I was trying to recall how this method and I could just remember the basics,
 something about a 'Bundle adjustment'. So in order not to forget what I had
-learned all those years go (10+ now ಠ_ಠ), I decided to do what any good
+learned all those years go (10+ now O_o), I decided to do what any good
 Geomatician-turned-Astronomer-turned-Coder would do. I am going to reproduce
 what photomodeler does (maybe in a very simplistic way), and document the
 process.
@@ -42,8 +42,8 @@ process.
 
 In those days I only knew, barely, three programming languages. Turbo Pascal,
 Java (1.2?) and Visual Basic 6.0. Today, many 10k lines of code later and I
-don't know those three anymore. In that time I went through a few more (C, C++,
-Fortan 77/90/95), javascript, coffeescript and (thank the stars!), Python. I've
+don't know those three anymore. In that time I went through a few more: C, C++,
+Fortan 77/90/95, javascript, coffeescript and (thank the stars!), Python. I've
 been using Python for EVERYTHING for years now so any weekend coding projects
 will be done in that.
 
