@@ -212,6 +212,14 @@ a.sidebar-nav-item:focus {
   color: #90a959;
 }
 
+/* crunchbang */
+.theme-base-09 .sidebar {
+  background-color: #3A3C3D;
+}
+.theme-base-09 .content a,
+.theme-base-09 .related-posts li a:hover {
+  color: #6a9fb5;
+}
 /* Cyan */
 .theme-base-0c .sidebar {
   background-color: #75b5aa;
