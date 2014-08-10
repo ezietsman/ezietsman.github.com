@@ -226,14 +226,16 @@ blockquote p:last-child {
     padding-left: 1.25rem;
   }
 }
-
 img {
   display: block;
   max-width: 100%;
   margin: auto;
   border-radius: 5px;
 }
-
+figure > figcaption {
+    font-style: italic;
+    text-align: center;
+}
 /* Tables */
 table {
   margin-bottom: 1rem;
