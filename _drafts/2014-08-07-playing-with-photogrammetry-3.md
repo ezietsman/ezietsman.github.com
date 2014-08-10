@@ -63,13 +63,31 @@ of the threshold, which I don't mind being mangled by another function.
 The last bit is a python list comprehension that filters out contours that is
 shorter than 10 vertices.
 
-Plotting the contours over the original image gives us something like this
+Plotting the contours over the original image gives us something like this:
 
 <figure>
-  <img src="/assets/images/photogrammetry/contours.png" alt="Contours plotted over
+<img src="/assets/images/photogrammetry/contours.png" alt="Contours plotted over
 the original image">
-  <figcaption>The contours plotted over the original image.</figcaption>
+<figcaption>The contours (red)  plotted over the original image.</figcaption>
 </figure>
 
+
+The contour function returns a list of contours and these in turn are basically
+lists of the coordinates of the contours' vertices. So I know I wanted the
+positions of the targets (this is what I'm trying to do, afterall), so there is
+a few ways I can do this:
+
+* calculate the centre of mass of the contour vertices
+* fit an ellipse to the contour coordinates and use its centre
+
+I rejected the first option immediately because many of the contours are asymmetric. 
+I really want the centre of ellipses and the contours are just rough
+estimations of where I may find an elliptical target.
+
+The second option *works* but it is not ideal. For the contours that are
+located on the outer edge of a RAD target, there is a concave part where the
+notch is. If I blindly fit an ellipse to these contours, that concave part will
+skew the ellipse's centre along a line from the notch through the centre. The
+ellipse's values will also be affected.
 
 
