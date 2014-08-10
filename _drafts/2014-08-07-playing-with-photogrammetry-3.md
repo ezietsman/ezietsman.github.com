@@ -88,6 +88,49 @@ The second option *works* but it is not ideal. For the contours that are
 located on the outer edge of a RAD target, there is a concave part where the
 notch is. If I blindly fit an ellipse to these contours, that concave part will
 skew the ellipse's centre along a line from the notch through the centre. The
-ellipse's values will also be affected.
+ellipse's values will also be affected. In the image below I illustrate this problem.
 
+<figure>
+  <img src="/assets/images/photogrammetry/ellipse-fits.png" alt="Image showing data along two ellipses and the best fitting ellipse fitted to each.">
+  <figcaption>Red: Ellipse fitted to convex data points. Green: ellipse fitted to data points with concave 'notch'.</figcaption>
+</figure>
+
+In the plot[^ellipse-fitting-script], the red markers show data points where
+the edge of an ellipse falls. In the case of the red markers, all the points
+fall on the edge of some ellipse (I know this because I made up the numbers).
+In the case of the green points, I changed two of them to fall on the edge of a
+smaller ellipse that is otherwise the same as the one we have here. This
+simulates the *zero-notch* we get on the outer edge of the RAD targets.
+
+I calculated the best-fitting ellipse for each dataset and I plotted those
+ellipses over the data points. The ellipse fitted to the convex points (no
+ notch) is a solid (red) line and the ellipse fitted to the points
+containing the notch is a dashed (green) line. I also plotted the centres of
+both ellipses. As you can clearly see, the two ellipses are not the same and
+the two centres are also slightly offset.
+
+The way I got around this was to find a way to 'get rid' of the notch. What I
+needed was a polygon that would fit around the contour (notch and all) but 
+*bridge* that gap where the notch is. Sound familiar? Again, luckily, this 
+is a solved problem. Enter the [convex hull](http://en.wikipedia.org/wiki/Convex_hull).
+
+From Wikipedia
+
+>In mathematics, the convex hull or convex envelope of a set X of points in the Euclidean plane or Euclidean space is the smallest convex set that contains X.  For instance, when X is a bounded subset of the plane, the convex hull may be visualized as the shape formed by a rubber band stretched around X.
+
+A rubber band stretched around X eh?  Now the cool thing is, the convex hull
+calculation will not *add* any new data points to my ellipse contours. It will
+give me straight lines between points that are already on my ellipses, should
+it encounter a *notch* or concave segment. This way, if I fit an ellipse to the
+convex hull points, the notchy parts do not affect my fits so much and hence I
+get very good coordinates for the centers of the ellipses.
+
+So, armed with this knowledge, I set out to calculate, for each contour I got
+from the threshold, the convex hull and it is to this that I fitted ellipses.
+
+
+## Ellipses: I have too many
+
+
+[^ellipse-fitting-script]: [Python script for ellipse plot](/assets/scripts/ellipse-fitting-demo.py)
 
