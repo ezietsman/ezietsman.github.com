@@ -1,12 +1,15 @@
-import prettyplotlib as plt
+#import prettyplotlib as plt
 import numpy as np
 import scipy.optimize
-import matplotlib.pyplot as pyplt
+import matplotlib.pyplot as plt
 import matplotlib
 
-font = {'size': 16}
+# need matplotlib >= 1.4
+#matplotlib.style.use('fivethirtyeight')
+matplotlib.style.use('ggplot')
 
-matplotlib.rc('font', **font)
+#font = {'size': 16}
+#matplotlib.rc('font', **font)
 '''
     Script tot illustrate ellipse fitting problems on contours that have
     concave parts to them
@@ -81,18 +84,21 @@ if __name__ == "__main__":
     x2fit, y2fit = ellipse_func(fit2, fittheta)
 
     fig, ax = plt.subplots(1)
+    ax.set_aspect('equal')
 
     # convex data
-    plt.scatter(ax, x1, y1, s=25, color='r')
-    plt.plot(ax, x1fit, y1fit, 'r', linewidth=1, label="Fit to convex data")
-    plt.scatter(ax, (fit1[0],), (fit1[1],), color='r', marker='o')
+    plt.scatter(x1, y1, s=25, color='r')
+    plt.plot(x1fit, y1fit, 'r', linewidth=1, label="Fit to convex data")
+    plt.scatter((fit1[0],), (fit1[1],), color='r', marker='o')
 
     # concave data
-    plt.scatter(ax, x2, y2, s=25, color='g')
-    plt.plot(ax, x2fit, y2fit, 'g--', linewidth=1, label="Fit to concave data")
-    plt.scatter(ax, (fit2[0],), (fit2[1],), color='g', marker='o')
+    plt.scatter(x2, y2, s=25, color='g')
+    plt.plot(x2fit, y2fit, 'g--', linewidth=1, label="Fit to concave data")
+    plt.scatter((fit2[0],), (fit2[1],), color='g', marker='o')
 
-    plt.legend(ax)
-    pyplt.ylim(1, 8.5)
-    pyplt.xlim(1.5, 8.5)
-    pyplt.show()
+    plt.legend()
+    plt.ylim(1, 8.5)
+    plt.xlim(1.5, 8.5)
+    ## As you noted.
+    plt.savefig('output.png', bbox_inches='tight', pad_inches=0)
+    plt.show()
