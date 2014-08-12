@@ -3,9 +3,8 @@ import numpy as np
 import scipy.optimize
 import matplotlib.pyplot as plt
 import matplotlib
-
+matplotlib.rcParams['font.family'] = 'PT Sans'
 # need matplotlib >= 1.4
-#matplotlib.style.use('fivethirtyeight')
 matplotlib.style.use('ggplot')
 
 #font = {'size': 16}
@@ -96,7 +95,7 @@ if __name__ == "__main__":
     plt.plot(x2fit, y2fit, 'g--', linewidth=1, label="Fit to concave data")
     plt.scatter((fit2[0],), (fit2[1],), color='g', marker='o')
 
-    plt.legend()
+    plt.legend(fontsize=16)
     plt.ylim(1, 8.5)
     plt.xlim(1.5, 8.5)
     ## As you noted.

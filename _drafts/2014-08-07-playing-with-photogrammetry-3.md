@@ -35,7 +35,7 @@ light and dark parts of the targets. This way I get to leverage a powerful
 algorithm that will give me a much smaller amount of data to work with as well
 as polygons which are situated near the regions I'm interested in.
 
-From wikipedia:
+From Wikipedia:
 
 >   "More generally, a contour line for a function of two variables is a curve
 >   connecting points where the function has the same particular value."
@@ -74,7 +74,7 @@ the original image">
 
 The contour function returns a list of contours and these in turn are basically
 lists of the coordinates of the contours' vertices. So I know I wanted the
-positions of the targets (this is what I'm trying to do, afterall), so there is
+positions of the targets (this is what I'm trying to do, after all), so there is
 a few ways I can do this:
 
 * calculate the centre of mass of the contour vertices
@@ -130,6 +130,53 @@ from the threshold, the convex hull and it is to this that I fitted ellipses.
 
 
 ## Ellipses: I have too many
+
+I went ahead an fit an ellipse to every convex hull of every contour. Again, I utilised the `opencv` function for fitting ellipses to the convex hulls:
+
+{% highlight python %}
+def _find_ellipses(self):
+    ''' finds all the ellipses in the image
+    '''
+    ellipses = []
+    hulls = []
+    # for each contour, fit an ellipse
+    for i, cnt in enumerate(self.contours):
+        # get convex hull of contour
+        hull = cv2.convexHull(cnt, returnPoints=True)
+
+        if len(hull) > 5:
+            ellipse = cv2.fitEllipse(np.array(hull))
+            ellipses.append(ellipse)
+            hulls.append(hulls)
+
+    return ellipses, hulls
+{% endhighlight %}
+
+Note that I offhand discarded contours for which the convex hull contained
+fewer than 5 vertices, the target convex hulls are a bit larger than that.
+
+This is what I got:
+
+<figure>
+  <img src="/assets/images/photogrammetry/all-ellipses.png" alt="All ellipses plotted on one image.">
+  <figcaption>Overabundance.</figcaption>
+</figure>
+
+Every blue blob in that image is an ellipse. See a closeup:
+
+<figure>
+  <img src="/assets/images/photogrammetry/ellipses-closeup.png" alt="Close up iof ellipses fit to some target contours.">
+  <figcaption>Good fits, but I need to get rid of the extra ones.</figcaption>
+</figure>
+
+In the closeup it is clear that the ellipses on the targets are where they
+should be but there are some that are obviously out of place. In particular,
+each black square has an ellipse that basically touches its four corners and
+then there are some that are seemingly fitted on nothing. Remember, they were
+fit on contours that were derived from the threshold image and this is the
+original image I'm using for illustration.
+
+The next step is to thin the herd, so to speak.
 
 
 [^ellipse-fitting-script]: [Python script for ellipse plot](/assets/scripts/ellipse-fitting-demo.py)
