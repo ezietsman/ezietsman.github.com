@@ -95,7 +95,7 @@ ellipse's values will also be affected. In the image below I illustrate this pro
   <figcaption>Red: Ellipse fitted to convex data points. Green: ellipse fitted to data points with concave 'notch'.</figcaption>
 </figure>
 
-In the plot[^ellipse-fitting-script], the red markers show data points where
+In the plot [^ellipse-fitting-script], the red markers show data points where
 the edge of an ellipse falls. In the case of the red markers, all the points
 fall on the edge of some ellipse (I know this because I made up the numbers).
 In the case of the green points, I changed two of them to fall on the edge of a
@@ -176,8 +176,59 @@ then there are some that are seemingly fitted on nothing. Remember, they were
 fit on contours that were derived from the threshold image and this is the
 original image I'm using for illustration.
 
-The next step is to thin the herd, so to speak.
+I did one more thing.
 
+See those black squares around the targets? Well, they are also found by the
+contour function and hence each gets an ellipse fitted to it, badly. `opencv`
+has a function that will find the best-fitting polygon approximation for a
+contour, and I used this function to find (most) of the squares. The code looks
+like:
+
+{% highlight python %}
+def find_square_contours(self, epsilon=0.1, min_area=200, max_area=4000):
+    ''' Find the ones that is approximately square
+    '''
+    squares = []
+    for cnt in self.contours:
+        area = abs(cv2.contourArea(cnt))
+        err = epsilon*cv2.arcLength(cnt, True)
+        hull = cv2.convexHull(cnt)
+        approx = cv2.approxPolyDP(hull, err, True)
+        if len(approx) != 4:
+            continue
+        if area < min_area:
+            continue
+        if area > max_area:
+            continue
+        square = Square(approx)
+        squares.append(square)
+    return squares
+{% endhighlight %}
+
+
+So at this point I have a list of ellipses (center, major and minor axis and rotation angle) as well as a list of squares (I know the coordinates of their corners).
+
+Upwards and onwards!
+
+## Selecting the targets
+
+The next part deals with selecting the things on the image that are in fact
+targets. Up to this point there haven't really been any intelligence in 
+the algorithm, it has been more boilerplate stuff, reducing the original
+data into a form that can be worked on. The next part is where things get
+more interesting and where this algorithm can see substantial improvements.
+[^biggerpicture]
+
+### Measuring the encoding of a target
+
+The next part of this algorithm needs to know the value of a given target.
+
+
+
+
+## Notes
 
 [^ellipse-fitting-script]: [Python script for ellipse plot](/assets/scripts/ellipse-fitting-demo.py)
+
+[^biggerpicture]: I've decided to go ahead and show what I have at the moment, then move on to the really interesting parts of this whole exercise (measuring the radio dish shape), before I revisit this part. By then any software I have will have taken some shape and I will have had a larger overview of the whole problem, then I will possibly come back and make improvements to this part of the work.
 
