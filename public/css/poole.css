@@ -378,8 +378,18 @@ tbody tr:nth-child(odd) th {
 .related-posts li a:hover small {
   color: inherit;
 }
-
-
+/*
+ * Footnotes
+ *
+ */
+.footnotes{
+    margin-top: 4em;
+    font-size: 95%;
+}
+.footnotes:before{
+    content: "Footnotes";
+    font-weight: bold;
+}
 /*
  * Pagination
  *

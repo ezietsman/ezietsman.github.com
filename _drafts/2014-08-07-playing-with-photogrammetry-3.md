@@ -219,6 +219,21 @@ data into a form that can be worked on. The next part is where things get
 more interesting and where this algorithm can see substantial improvements.
 [^biggerpicture]
 
+
+If you give the zoomed image of the ellipse fits a look, you'll see that the
+ellipses that have been fit to each of them forms a kind of pattern. In the case
+of the larger RAD targets, there is an ellipse fitted around the central
+circle, another one on the outside of the outer ring and possibly one in
+between those two. In the case of the smaller uncoded targets, we usually see
+two ellipses: one around the target center and one fitted to the black square.
+
+The next part of the algorithm chooses one of these types or discards both, for 
+each ellipse and it does so in the following manner:
+
+
+
+
+
 ### Measuring the encoding of a target
 
 The next part of this algorithm needs to know the value of a given target.
@@ -226,7 +241,6 @@ The next part of this algorithm needs to know the value of a given target.
 
 
 
-## Notes
 
 [^ellipse-fitting-script]: [Python script for ellipse plot](/assets/scripts/ellipse-fitting-demo.py)
 
