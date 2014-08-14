@@ -230,7 +230,15 @@ two ellipses: one around the target center and one fitted to the black square.
 The next part of the algorithm chooses one of these types or discards both, for 
 each ellipse and it does so in the following manner:
 
+For each ellipse:
 
+  1. Calculate the *encoding* of a concentric ellipse that is **85%** the
+size of the given ellipse.
+  2. Calculate the *encoding* of another concentric ellipse that is
+**60%** the size of the ellipse.
+  
+If the first one has an encoding of '0111111111' and the second has an
+encoding that starts with '0' then I deem that ellipse as a RAD target.
 
 
 
