@@ -1,4 +1,3 @@
-#import prettyplotlib as plt
 import numpy as np
 import scipy.optimize
 import matplotlib.pyplot as plt
@@ -7,8 +6,6 @@ matplotlib.rcParams['font.family'] = 'PT Sans'
 # need matplotlib >= 1.4
 matplotlib.style.use('ggplot')
 
-#font = {'size': 16}
-#matplotlib.rc('font', **font)
 '''
     Script tot illustrate ellipse fitting problems on contours that have
     concave parts to them
@@ -98,6 +95,5 @@ if __name__ == "__main__":
     plt.legend(fontsize=16)
     plt.ylim(1, 8.5)
     plt.xlim(1.5, 8.5)
-    ## As you noted.
     plt.savefig('output.png', bbox_inches='tight', pad_inches=0)
     plt.show()
