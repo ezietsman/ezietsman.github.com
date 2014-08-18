@@ -249,8 +249,8 @@ targets worked as follows:
 
 For each polygon:
 
-    1. Check if an ellipse falls inside.
-    2. Check if that ellipse is smaller than **BOTH** the long and short sides
+  1. Check if an ellipse falls inside.
+  2. Check if that ellipse is smaller than **BOTH** the long and short sides
 
 If 1 and 2 is true then the ellipse that falls inside is deemed a target. So I 
 made a list of ellipses that is deemed small targets.
