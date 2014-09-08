@@ -204,7 +204,7 @@ almost 25 times faster than even the 8 thread Fortran version!
 The code needed to do this was not super hard to write but it wasn't as easy as
 the original numpy version was and while this increase in performance is
 astonishing, most real-world applications won't see these kinds of results due
-to [Amdahl's Law](http://en.wikipedia.org/wiki/Amdahl's\_law). I still think it
+to [Amdahl's Law](http://en.wikipedia.org/wiki/Amdahl's_law). I still think it
 is astonishing that I could make my numpy function go 120x faster with 6 times
 the amount of code (and a light sprinkling of 1152 cores).
 
