@@ -127,7 +127,7 @@ with Python 3.4, it should run on python 2.7 too. Let me know if you'd like a
 `pip requirements.txt` file for easy dependency installations. You'll need at least the following:
 
 
-    pip install numpy matplotlib cython pyopencv
+    pip install numpy matplotlib cython pyopencl
 
 as well as a `c` and `fortran` compiler. I used `gcc` and `gfortran`. You'll
 also need a working `opencl` installation. I'm unsure as to what that entails
